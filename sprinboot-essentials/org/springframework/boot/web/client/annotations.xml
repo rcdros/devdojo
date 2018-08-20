@@ -1,0 +1,5 @@
+<root>
+    <item name='org.springframework.boot.web.client.RestTemplateBuilder'>
+        <annotation name='java.lang.Deprecated'/>
+    </item>
+</root>

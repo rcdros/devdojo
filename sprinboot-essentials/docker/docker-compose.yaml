@@ -1,0 +1,30 @@
+version: '2'
+services:
+  mysql:
+    build: ./mysql
+    container_name: mysql_devdojo
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_DATABASE: school
+      MYSQL_USER: mysqlroot
+      MYSQL_PASSWORD: mysqlroot
+      MYSQL_ROOT_PASSWORD: root
+    networks:
+      - redenet
+
+  devdojo:
+    build: ./devdojo
+    container_name: api_devdojo
+    ports:
+      - "8089:8080"
+    depends_on:
+      - mysql
+    networks:
+      - redenet
+    links:
+      - mysql
+
+networks:
+  redenet:
+    driver: bridge
